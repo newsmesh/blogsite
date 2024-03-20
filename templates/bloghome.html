@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block bactive %}active{% endblock bactive %}
+{% block title %}
+Explore Blogs
+{% endblock title %}
+{% block css %}
+<style>
+    #c {
+        color: green;
+    }
+</style>
+{% endblock css %}
+{% block body %}
+<center>
+  <div class="container" id="c">
+      <br>
+      <br>
+			<div class="row">
+				{% for blog in blogs %}
+      	<div class="col-xl-6 col-md-6 mb-5">
+      	  <div class="card border-left-primary shadow h-100 py-2">
+						<div class="card-body">
+							{% if blog.img == True %}
+                      <img class="card-img-top" src="/media/{{blog.image}}" width="500" height="350"
+                          class="d-block w-100" alt="...">
+              {% else %}
+              	{% if blog.category == 'Politics' %}
+              	    <img class="card-img-top d-block w-100" alt="politics"
+              	    src="https://drive.google.com/uc?export=view&id=1oSZHHuy8gXoi17V5jjutIFvi3YJ7bnxp" >
+              	{% else %}
+              	  <img class="card-img-top"
+              	  src="https://source.unsplash.com/500x350/?{{blog.imgtopic}},{{blog.category}}"
+              	  class="d-block w-100" alt="...">
+              	{% endif %}
+              {% endif %}
+						</div>
+						<div class="card-body">
+							<h5 class="text-dark">
+								<a href="/blogpost/{{blog.slug}}" class="text-black text-decoration-none">
+									{{blog.title}}
+								</a> 
+							</h5>
+							<p id="conte" class="card-text text-dark">
+								{{blog.discription|slice:120|safe}}
+							</p>
+							<a class=" btn btn-primary" href="/blogpost/{{blog.slug}}">
+								Read More...
+							</a>
+						</div>
+      	  </div>
+      	</div>
+				{% endfor %}
+			</div>
+	</div>
+</center>
+        <br>
+
+<script>
+    conten = document.getElementById(conte).value
+
+</script>
+{% endblock body %}

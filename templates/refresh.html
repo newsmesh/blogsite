@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}
+Refresh the News
+{% endblock title %}
+{% block body %}
+<form action="/refresh/" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Refresh">
+</form>
+{% endblock body %}

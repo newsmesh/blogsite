@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block bactive %}active{% endblock bactive %}
+{% block title %} 
+{{ blog.slug }}
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="my-4">
+        {% if blog.img == True %}
+        <img class="card-img-top d-block w-100" src="/media/{{blog.image}}" alt="...">
+        {% else %}
+        <img src="https://source.unsplash.com/1600x500/?{{blog.imgtopic}},{{blog.category}}" class="d-block w-100"
+            alt="...">
+        {% endif %}
+        <!-- <img src="https://source.unsplash.com/1600x500/?{{blog.title}},{{blog.slug}}" class="d-block w-100" alt="..."> -->
+        <!-- <img src="/media/{{blog.image}}" alt="..."> -->
+    </div>
+    <h3 class=" my-3">{{blog.title}}</h3>
+    <div class="my-3">
+        {{blog.content|safe}}
+        <!-- in line 7 we use |safe because it will help us to display the text as per html tags or in html format -->
+    </div>
+</div>
+{% endblock body %}
